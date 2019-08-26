@@ -14,19 +14,6 @@ class GfsListbox extends mixinBehaviors([IronMenuBehavior], PolymerElement) {
 
                     @apply --gfs-listbox;
                 }
-
-                :host ::slotted(gfs-item) {
-                    border-bottom: 1px solid #ccc;
-                }
-
-                :host ::slotted(gfs-item):last-child {
-                    background: red;
-                    border-bottom: none;
-                }
-
-                :host ::slotted(*:hover) {
-                    @apply --gfs-listbox-hover;
-                }
             </style>
 
             <slot></slot>

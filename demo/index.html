@@ -1,0 +1,93 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <title>gfs-listbox demo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+        <script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2.0.0/webcomponents-loader.js"></script>
+        <script type="module">
+            import '@polymer/iron-demo-helpers/demo-snippet.js';
+            import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+            import '@gfsdeliver/gfs-item/gfs-item.js';
+            import '../gfs-listbox.js';
+            import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+
+            const template = html
+                `<custom-style>
+                    <style is="custom-style" include="demo-pages-shared-styles"></style>
+                </custom-style>`;
+            document.body.appendChild(template.content);
+        </script>
+    </head>
+    <body>
+        <custom-style>
+            <style is="custom-style">
+                gfs-listbox {
+                    border-bottom: none;
+                }
+
+                gfs-item {
+                    cursor: pointer;
+                }
+            </style>
+        </custom-style>
+        <div class="vertical-section-container centered"></div>
+            <demo-snippet>
+                <template>
+                    <h3>initially</h3>
+                    <gfs-listbox>
+                        <gfs-item>Item 1</gfs-item>
+                        <gfs-item>Item 2</gfs-item>
+                        <gfs-item>Item 3</gfs-item>
+                    </gfs-listbox>
+                </template>
+            </demo-snippet>
+
+            <demo-snippet>
+                <template>
+                    <h3>pre-selected or disabled item by default</h3>
+                    <gfs-listbox selected="1">
+                        <gfs-item>Item 1</gfs-item>
+                        <gfs-item>Item 2</gfs-item>
+                        <gfs-item disabled>Item 3</gfs-item>
+                        <gfs-item>Item 4</gfs-item>
+                    </gfs-listbox>
+                </template>
+            </demo-snippet>
+
+            <demo-snippet>
+                <template>
+                    <dom-bind>
+                        <template is="dom-bind">
+                            <h3>multiple selected items</h3>
+                            <p>"[[items]]" is selected.</p>
+                            <gfs-listbox multi attr-for-selected="key" selected-values="{{items}}">
+                                <gfs-item key="item1">Item 1</gfs-item>
+                                <gfs-item key="item2">Item 2</gfs-item>
+                                <gfs-item key="item3">Item 3</gfs-item>
+                                <gfs-item key="item4">Item 4</gfs-item>
+                            </gfs-listbox>
+                        </template>
+                    </dom-bind>
+                </template>
+            </demo-snippet>
+
+            <demo-snippet>
+                <template>
+                    <dom-bind>
+                        <template is="dom-bind">
+                            <h3>Use the attr-for-selected property (from IronSelectableBehavior) to select items by attribute value, rather than index.</h3>
+                            <p>"[[itemName]]" are selected.</p>
+                            <gfs-listbox attr-for-selected="item-name" selected="{{itemName}}" fallback-selection="None">
+                                <gfs-item item-name="item1">Item 1</gfs-item>
+                                <gfs-item item-name="item2">Item 2</gfs-item>
+                                <gfs-item item-name="item3">Item 3</gfs-item>
+                                <gfs-item item-name="item4">Item 4</gfs-item>
+                            </gfs-listbox>
+                        </template>
+                    </dom-bind>
+                </template>
+            </demo-snippet>
+        </div>
+    </body>
+</html>
